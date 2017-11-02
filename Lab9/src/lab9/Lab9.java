@@ -9,11 +9,13 @@ import java.util.Optional;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
@@ -50,14 +52,22 @@ public class Lab9 extends Application {
             }
         }
         
+        HBox commandPane = new HBox();
+        Button saveButton = new Button("Save");
+        Button exitButton = new Button("Exit");
+        commandPane.getChildren().addAll(saveButton, exitButton);
+        commandPane.setAlignment(Pos.CENTER);
+        
         BorderPane root = new BorderPane();
         
         root.setCenter(grid);
+        root.setBottom(commandPane);
         
         Scene scene = new Scene(root, 300, 250);
         
         primaryStage.setTitle("Hello World!");
         primaryStage.setScene(scene);
+        primaryStage.setResizable(false);
         primaryStage.show();
     }
 

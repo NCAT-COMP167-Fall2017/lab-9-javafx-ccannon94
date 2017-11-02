@@ -5,7 +5,11 @@
  */
 package lab9;
 
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.Optional;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -25,11 +29,12 @@ import javafx.stage.Stage;
  */
 public class Lab9 extends Application {
 
-    Button[][] buttons;
+    private Button[][] buttons;
+    private int n;
 
     @Override
     public void start(Stage primaryStage) {
-        int n = 0;
+        n = 0;
         TextInputDialog dialog = new TextInputDialog();
         dialog.setTitle("Maze Configuration");
         dialog.setHeaderText("Each maze is an n x n square");
@@ -104,7 +109,28 @@ public class Lab9 extends Application {
             Button b = (Button) e.getSource();
 
             if (b.getText().equals("Save")) {
-                //create output file
+                TextInputDialog dialog = new TextInputDialog();
+                dialog.setTitle("Save Maze");
+                dialog.setHeaderText("Your maze will be saved in a character configuration file");
+                dialog.setContentText("Please enter a save file name:");
+                
+                Optional<String> result = dialog.showAndWait();
+                if(result.isPresent()) {
+                    try {
+                        PrintWriter writer = new PrintWriter(result.get());
+                        writer.println(n + " " + n);
+                        for(int i = 0; i < n; i++) {
+                            for(int j = 0; j < n; j++) {
+                                writer.print(getColorChar(buttons[i][j]));
+                            }
+                            writer.println();
+                        }
+                        writer.close();
+                    } catch (FileNotFoundException ex) {
+                        System.err.println("Could not open " + result.get() + " for reading");
+                        Logger.getLogger(Lab9.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
 
             } else if (b.getText().equals("Exit")) {
                 //exit the application

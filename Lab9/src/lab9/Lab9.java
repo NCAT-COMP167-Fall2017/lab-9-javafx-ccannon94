@@ -133,7 +133,7 @@ public class Lab9 extends Application {
                 }
 
             } else if (b.getText().equals("Exit")) {
-                //exit the application
+                System.exit(0);
 
             } else { //a maze button was clicked
 

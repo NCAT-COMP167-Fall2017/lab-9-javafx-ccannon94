@@ -72,7 +72,7 @@ public class Lab9 extends Application {
         root.setCenter(grid);
         root.setBottom(commandPane);
 
-        Scene scene = new Scene(root, 300, 250);
+        Scene scene = new Scene(root);
 
         primaryStage.setTitle("Hello World!");
         primaryStage.setScene(scene);

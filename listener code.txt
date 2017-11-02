@@ -1,4 +1,4 @@
-//Returns the Maze character associated with the given button   
+//Returns the Maze character associated with the given button   
 private char getColorChar(Button b )
     {
          if (b.getStyle().indexOf("blue") > -1) {

@@ -13,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
@@ -21,6 +22,7 @@ import javafx.stage.Stage;
  * @author CCannon
  */
 public class Lab9 extends Application {
+    Button[][] buttons;
     
     @Override
     public void start(Stage primaryStage) {
@@ -35,7 +37,22 @@ public class Lab9 extends Application {
             n = Integer.parseInt(result.get());
         }
         
+        GridPane grid = new GridPane();
+        buttons = new Button[n][n];
+        for(int i = 0; i < n; i++) {
+            for(int j = 0; j < n; j++) {
+                Button newButt = new Button();
+                newButt.setStyle("-fx-background-color: blue");
+                newButt.setPrefSize(50, 50);
+                
+                grid.add(newButt, j, i);
+                buttons[i][j] = newButt;
+            }
+        }
+        
         BorderPane root = new BorderPane();
+        
+        root.setCenter(grid);
         
         Scene scene = new Scene(root, 300, 250);
         

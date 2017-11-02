@@ -141,11 +141,11 @@ public class Lab9 extends Application {
                 if (val == '0') {  //the button is currently blue so change it to white
                     b.setStyle("-fx-background-color: white;");
                 } else if (val == '1') {
-
+                    b.setStyle("-fx-background-color: green");
                 } else if (val == 'S') {
-
+                    b.setStyle("-fx-background-color: red");
                 } else {
-
+                    b.setStyle("-fx-background-color: blue");
                 }
 
             }
